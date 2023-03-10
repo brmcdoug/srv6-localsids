@@ -3,7 +3,7 @@ BINARY ?= bin/$(EXECUTABLE)
 REPO=iejalapeno
 REGISTRY_NAME?=docker.io/iejalapeno
 IMAGE=srv6-localsids
-TAG=latest
+TAG=sj9-cluster
 # If you connect to dockerhub via a proxy: uncomment and edit the following line (and see below docker build lines)
 #PROXY=http://proxy.esl.cisco.com:8080
 

@@ -9,7 +9,7 @@ user = "root"
 pw = "jalapeno"
 dbname = "jalapeno"
 
-client = ArangoClient(hosts='http://198.18.128.101:30852')
+client = ArangoClient(hosts='http://10.200.99.27:32748')
 db = client.db(dbname, username=user, password=pw)
 
 # Create Arango collection if it doesn't already exist
@@ -22,7 +22,7 @@ else:
 # define Kafka consumer and topic to monitor
 consumer = KafkaConsumer(
     'jalapeno.srv6',
-     bootstrap_servers=['198.18.128.101:30092'],
+     bootstrap_servers=['10.200.99.27:30092'],
      auto_offset_reset='latest',
      enable_auto_commit=False,
      group_id='jalapeno',
