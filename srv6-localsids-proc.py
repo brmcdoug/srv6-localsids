@@ -13,6 +13,7 @@ client = ArangoClient(hosts='http://198.18.128.101:30852')
 db = client.db(dbname, username=user, password=pw)
 
 # Create Arango collection if it doesn't already exist
+print("connecting to arango")
 if db.has_collection('srv6_local_sids'):
     srv6_local_sids = db.collection('srv6_local_sids')
 else:
@@ -29,11 +30,12 @@ consumer = KafkaConsumer(
      value_deserializer=lambda x: loads(x.decode('utf-8')))
 
 # for loop subscribes to Kafka messages and uploads docs to DB
+print("starting loop")
 for message in consumer:
     consumer.commit() 
     message = message.value
     msgobj = json.dumps(message, indent=4)
-
+    print(msgobj)
     # beware, regex'ing follows
     msg = msgobj.replace("/", "_" )
     msg = (re.sub("sid_context_key_u_dt4_u_dt_base_ctx_table_id", "table_id", msg))
@@ -52,7 +54,8 @@ for message in consumer:
 
     # upload document to DB
     if db.has_document(id):
-        print("document exists: ", id)
+        metadata = srv6_local_sids.update(msgdict)
+        print("document exists, updating timestamp: ", id)
     else:
         metadata = srv6_local_sids.insert(msgdict)
     

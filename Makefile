@@ -1,6 +1,7 @@
 EXECUTABLE ?= jalapeno
 BINARY ?= bin/$(EXECUTABLE)
 REPO=iejalapeno
+REGISTRY_NAME?=docker.io/iejalapeno
 IMAGE=srv6-localsids
 TAG=latest
 # If you connect to dockerhub via a proxy: uncomment and edit the following line (and see below docker build lines)
@@ -14,8 +15,8 @@ build:
 run:
 	python3 srv6-localsids-proc.py
 
-container:
+container: 
 	docker build -t ${REPO}/${IMAGE}:${TAG} .
 
-push: srv6-localsids
+push: 
 	docker push $(REGISTRY_NAME)/srv6-localsids:$(IMAGE_VERSION)

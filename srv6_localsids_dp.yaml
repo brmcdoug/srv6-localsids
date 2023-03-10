@@ -18,5 +18,9 @@ spec:
       containers:
       - name: srv6-localsids
         image: iejalapeno/srv6-localsids:latest
+        imagePullPolicy: Always
+        env:
+          - name: PYTHONUNBUFFERED
+            value: "1"
       imagePullSecrets:
         - name: regcred
