@@ -7,7 +7,7 @@ import re
 # define Kafka consumer and topic to monitor
 consumer = KafkaConsumer(
     'jalapeno.pm',
-     bootstrap_servers=['52.11.224.254:30092'],
+     bootstrap_servers=['172.30.106.142:30092'],
      auto_offset_reset='latest',
      enable_auto_commit=False,
      group_id='jalapeno',
