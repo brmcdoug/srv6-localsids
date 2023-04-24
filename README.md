@@ -31,4 +31,3 @@ python3 srv6-localsids-proc.py
 ```
 
 6. Watch for log entries and check ArangoDB for a new srv6_local_sids collection. Logs may take up to 120 seconds 
-
