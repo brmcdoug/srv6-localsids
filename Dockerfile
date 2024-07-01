@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.9
 WORKDIR /srv6-localsids
 COPY . /srv6-localsids
 RUN pip install --upgrade pip
