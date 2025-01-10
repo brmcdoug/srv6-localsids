@@ -35,7 +35,7 @@ spec:
         - name: credentials
           secret:
             secretName: jalapeno
-        env:
+          env:
           - name: PYTHONUNBUFFERED
             value: "1"
       imagePullSecrets:
